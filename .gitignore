@@ -1,0 +1,7 @@
+node_modules/
+.env
+.DS_Store
+dist/
+build/
+
+# https://github.com/Edut46/chinnapat-react.git
