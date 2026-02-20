@@ -16,8 +16,8 @@ function ProgressRing({ percent, size = 120, strokeWidth = 10, label, color }) {
         {/* Glow filter */}
         <defs>
           <linearGradient id={`grad-${color}`} x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor={color === 'cyan' ? '#06d6a0' : color === 'purple' ? '#a855f7' : '#667eea'} />
-            <stop offset="100%" stopColor={color === 'cyan' ? '#667eea' : color === 'purple' ? '#667eea' : '#06d6a0'} />
+            <stop offset="0%" stopColor={color === 'cyan' ? '#00f0ff' : color === 'purple' ? '#ff2a6d' : '#fcee09'} />
+            <stop offset="100%" stopColor={color === 'cyan' ? '#39ff14' : color === 'purple' ? '#fcee09' : '#00f0ff'} />
           </linearGradient>
           <filter id={`glow-${color}`}>
             <feGaussianBlur stdDeviation="3" result="blur" />
@@ -139,15 +139,15 @@ function App() {
       setTasks([res.data, ...tasks]);
       setNewTask('');
       Swal.fire({
-        title: 'เพิ่มสำเร็จ!',
+        title: 'TASK UPLOADED',
         icon: 'success',
         toast: true,
         position: 'top-end',
         timer: 1200,
         showConfirmButton: false,
         timerProgressBar: true,
-        background: '#1e1e3f',
-        color: '#e8eaf6',
+        background: '#0a0a0f',
+        color: '#00f0ff',
       });
     } catch (err) {
       console.error('ไม่สามารถเพิ่มงานได้:', err);
@@ -165,16 +165,16 @@ function App() {
 
   const deleteTask = async (id) => {
     const result = await Swal.fire({
-      title: 'ยืนยันการลบ?',
-      text: 'คุณต้องการลบรายการนี้หรือไม่?',
+      title: 'CONFIRM DELETION',
+      text: 'ต้องการลบข้อมูลนี้จากระบบ?',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#ff6b6b',
-      cancelButtonColor: '#667eea',
-      confirmButtonText: 'ลบเลย',
-      cancelButtonText: 'ยกเลิก',
-      background: '#1e1e3f',
-      color: '#e8eaf6',
+      confirmButtonColor: '#ff2a6d',
+      cancelButtonColor: '#00f0ff',
+      confirmButtonText: 'DELETE',
+      cancelButtonText: 'CANCEL',
+      background: '#0a0a0f',
+      color: '#00f0ff',
     });
 
     if (result.isConfirmed) {
@@ -182,25 +182,25 @@ function App() {
         await axios.delete(`${API}/${id}`);
         setTasks(tasks.filter(t => t._id !== id));
         Swal.fire({
-          title: 'ลบสำเร็จ!',
-          text: 'รายการถูกลบเรียบร้อยแล้ว',
+          title: 'DATA PURGED',
+          text: 'รายการถูกลบออกจากระบบแล้ว',
           icon: 'success',
           toast: true,
           position: 'top-end',
           timer: 1500,
           showConfirmButton: false,
           timerProgressBar: true,
-          background: '#1e1e3f',
-          color: '#e8eaf6',
+          background: '#0a0a0f',
+          color: '#00f0ff',
         });
       } catch (err) {
         console.error('ไม่สามารถลบงานได้:', err);
         Swal.fire({
-          title: 'เกิดข้อผิดพลาด',
+          title: 'SYSTEM ERROR',
           text: 'ไม่สามารถลบรายการได้',
           icon: 'error',
-          background: '#1e1e3f',
-          color: '#e8eaf6',
+          background: '#0a0a0f',
+          color: '#ff2a6d',
         });
       }
     }
@@ -269,8 +269,8 @@ function App() {
 
       {/* ===== MAIN CONTENT ===== */}
       <main className="app-container">
-        <h1 className="app-title">Task Master</h1>
-        <p className="app-subtitle">จัดการงานของคุณอย่างมืออาชีพ ✨</p>
+        <h1 className="app-title">CYBER//TASK</h1>
+        <p className="app-subtitle">// NEURAL TASK MANAGEMENT SYSTEM v2.077</p>
 
         <div className="card">
           {/* Stats Bar */}
@@ -334,8 +334,8 @@ function App() {
             </div>
           ) : filteredTasks.length === 0 ? (
             <div className="empty-state">
-              <span className="empty-icon">{tasks.length === 0 ? '🚀' : '🔍'}</span>
-              <p>{tasks.length === 0 ? 'ยังไม่มีรายการงาน — เพิ่มงานแรกของคุณเลย!' : 'ไม่พบรายการที่ค้นหา'}</p>
+              <span className="empty-icon">{tasks.length === 0 ? '⚡' : '🔍'}</span>
+              <p>{tasks.length === 0 ? '// NO TASKS IN QUEUE — INITIALIZE YOUR FIRST PROTOCOL' : '// NO MATCHING RECORDS FOUND'}</p>
             </div>
           ) : (
             <div className="task-list">
@@ -370,7 +370,7 @@ function App() {
           )}
         </div>
 
-        <p className="app-footer">Task Master — MERN Stack · Built with ❤️</p>
+        <p className="app-footer">CYBERTASK v2.077 — NEURAL NETWORK PROTOCOL · MERN STACK</p>
       </main>
 
       {/* ===== RIGHT SIDEBAR ===== */}
