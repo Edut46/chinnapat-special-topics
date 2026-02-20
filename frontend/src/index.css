@@ -111,6 +111,37 @@ body {
 .stats-line .stat-val.pending { color: var(--yellow); }
 .stats-line .stat-val.done { color: var(--green); }
 
+/* ===== Progress Bar ===== */
+.progress-section {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+}
+
+.progress-label {
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.progress-bar-ascii {
+  color: var(--green);
+  letter-spacing: 0.5px;
+  font-size: 0.75rem;
+}
+
+.progress-pct {
+  color: var(--text-secondary);
+  font-weight: 700;
+  min-width: 32px;
+  text-align: right;
+}
+
+.progress-pct.complete {
+  color: var(--green);
+}
+
 /* ===== Card ===== */
 .card {
   background: var(--bg-card);

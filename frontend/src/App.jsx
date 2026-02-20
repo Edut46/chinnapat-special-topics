@@ -118,6 +118,12 @@ function App() {
   const totalCount = tasks.length;
   const pendingCount = tasks.filter(t => !t.completed).length;
   const doneCount = tasks.filter(t => t.completed).length;
+  const completionPct = totalCount > 0 ? Math.round((doneCount / totalCount) * 100) : 0;
+
+  // ASCII progress bar
+  const barLength = 20;
+  const filledCount = Math.round((completionPct / 100) * barLength);
+  const progressBar = '█'.repeat(filledCount) + '░'.repeat(barLength - filledCount);
 
   // Today's date
   const today = new Date().toLocaleDateString('th-TH', {
@@ -143,6 +149,13 @@ function App() {
         <div className="stat">total: <span className="stat-val total">{totalCount}</span></div>
         <div className="stat">pending: <span className="stat-val pending">{pendingCount}</span></div>
         <div className="stat">done: <span className="stat-val done">{doneCount}</span></div>
+      </div>
+
+      {/* Progress Bar */}
+      <div className="progress-section">
+        <span className="progress-label">progress:</span>
+        <span className="progress-bar-ascii">[{progressBar}]</span>
+        <span className={`progress-pct ${completionPct === 100 ? 'complete' : ''}`}>{completionPct}%</span>
       </div>
 
       <div className="card">
